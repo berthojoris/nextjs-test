@@ -1,24 +1,37 @@
-import { Home, Settings, Code } from 'lucide-react';
+import { Home, Settings, Code, Server, File, RefreshCw, Wind } from 'lucide-react';
 import { Separator } from './ui/separator';
+import Link from 'next/link';
 
 export function Sidebar() {
   return (
     <aside className="fixed top-14 left-0 z-40 w-64 h-[calc(100vh-3.5rem)] bg-background border-r">
       <div className="p-4">
         <nav className="flex flex-col space-y-2">
-          <a href="#" className="flex items-center p-2 text-base font-normal text-foreground rounded-lg hover:bg-muted">
+          <Link href="/" className="flex items-center p-2 text-base font-normal text-foreground rounded-lg hover:bg-muted">
             <Home className="w-6 h-6" />
             <span className="ml-3">Dashboard</span>
-          </a>
-          <a href="#" className="flex items-center p-2 text-base font-normal text-foreground rounded-lg hover:bg-muted">
-            <Code className="w-6 h-6" />
-            <span className="ml-3">Deployments</span>
-          </a>
+          </Link>
           <Separator />
-          <a href="#" className="flex items-center p-2 text-base font-normal text-foreground rounded-lg hover:bg-muted">
-            <Settings className="w-6 h-6" />
-            <span className="ml-3">Settings</span>
-          </a>
+          <Link href="/ssg" className="flex items-center p-2 text-base font-normal text-foreground rounded-lg hover:bg-muted">
+            <File className="w-6 h-6" />
+            <span className="ml-3">SSG</span>
+          </Link>
+          <Link href="/ssr" className="flex items-center p-2 text-base font-normal text-foreground rounded-lg hover:bg-muted">
+            <Server className="w-6 h-6" />
+            <span className="ml-3">SSR</span>
+          </Link>
+          <Link href="/csr" className="flex items-center p-2 text-base font-normal text-foreground rounded-lg hover:bg-muted">
+            <Code className="w-6 h-6" />
+            <span className="ml-3">CSR</span>
+          </Link>
+          <Link href="/isr" className="flex items-center p-2 text-base font-normal text-foreground rounded-lg hover:bg-muted">
+            <RefreshCw className="w-6 h-6" />
+            <span className="ml-3">ISR</span>
+          </Link>
+          <Link href="/streaming" className="flex items-center p-2 text-base font-normal text-foreground rounded-lg hover:bg-muted">
+            <Wind className="w-6 h-6" />
+            <span className="ml-3">Streaming</span>
+          </Link>
         </nav>
       </div>
     </aside>
