@@ -1,4 +1,4 @@
-import { Home, Settings, Code, Server, File, RefreshCw, Wind } from 'lucide-react';
+import { Home, Settings, Code, Server, File, RefreshCw, Wind, Box, LayoutTemplate } from 'lucide-react';
 import { Separator } from './ui/separator';
 import Link from 'next/link';
 
@@ -31,6 +31,14 @@ export function Sidebar() {
           <Link href="/streaming" className="flex items-center p-2 text-base font-normal text-foreground rounded-lg hover:bg-muted">
             <Wind className="w-6 h-6" />
             <span className="ml-3">Streaming</span>
+          </Link>
+          <Link href="/rsc" className="flex items-center p-2 text-base font-normal text-foreground rounded-lg hover:bg-muted">
+            <Box className="w-6 h-6" />
+            <span className="ml-3">Server Components (RSC)</span>
+          </Link>
+          <Link href="/ppr" className="flex items-center p-2 text-base font-normal text-foreground rounded-lg hover:bg-muted">
+            <LayoutTemplate className="w-6 h-6" />
+            <span className="ml-3">Partial Prerendering (PPR)</span>
           </Link>
         </nav>
       </div>

@@ -6,7 +6,11 @@ import { Suspense } from 'react';
 // A component that simulates a slow data fetch
 async function SlowComponent() {
   await new Promise(resolve => setTimeout(resolve, 2000));
-  return <p>This part was streamed in after a delay.</p>;
+  return (
+    <div className="p-4 border rounded-lg bg-green-100 dark:bg-green-900/30">
+      <p className="font-semibold text-green-800 dark:text-green-300">This part was streamed in after a delay.</p>
+    </div>
+  );
 }
 
 export default function StreamingPage() {
@@ -18,7 +22,11 @@ export default function StreamingPage() {
         </CardHeader>
         <CardContent>
           <p>This page demonstrates streaming. The initial UI is sent immediately, and slower parts of the UI are streamed in as they become ready.</p>
-          <Suspense fallback={<p>Loading slow component...</p>}>
+                    <Suspense fallback={
+            <div className="p-4 border rounded-lg bg-muted animate-pulse">
+              <div className="h-6 bg-gray-300 dark:bg-gray-700 rounded w-3/4"></div>
+            </div>
+          }>
             <SlowComponent />
           </Suspense>
         </CardContent>
