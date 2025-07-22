@@ -1,6 +1,7 @@
 // src/app/ssg/page.tsx
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { formatTimestamp } from "@/lib/utils";
 
 export default function SSGPage() {
   return (
@@ -11,7 +12,7 @@ export default function SSGPage() {
         </CardHeader>
         <CardContent>
           <p>This page is statically generated at build time. The content is pre-rendered and served from a CDN, making it extremely fast.</p>
-          <p>The data on this page was fetched at: {new Date().toISOString()}</p>
+                    <p>The data on this page was fetched at: {formatTimestamp(new Date())}</p>
         </CardContent>
       </Card>
     </div>

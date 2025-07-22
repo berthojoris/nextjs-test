@@ -1,3 +1,4 @@
+import { formatTimestamp } from '@/lib/utils';
 import { Suspense } from 'react';
 
 /**
@@ -11,7 +12,7 @@ async function getServerData() {
   await new Promise(resolve => setTimeout(resolve, 2000)); // Simulate network delay
   return {
     message: 'Hello from the server!',
-    timestamp: new Date().toISOString(),
+    timestamp: new Date(),
   };
 }
 
@@ -29,7 +30,7 @@ async function ServerData() {
   return (
     <div className="p-4 border rounded-lg bg-green-100 dark:bg-green-900/30">
       <p className="font-semibold text-green-800 dark:text-green-300">Server Message: {data.message}</p>
-      <p className="font-semibold text-green-800 dark:text-green-300">Render Timestamp: {data.timestamp}</p>
+            <p className="font-semibold text-green-800 dark:text-green-300">Render Timestamp: {formatTimestamp(data.timestamp)}</p>
     </div>
   );
 }

@@ -2,6 +2,7 @@
 'use client';
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { formatTimestamp } from "@/lib/utils";
 import { useEffect, useState } from "react";
 
 export default function CSRPage() {
@@ -9,7 +10,7 @@ export default function CSRPage() {
 
   useEffect(() => {
     // This code runs only on the client
-    setTime(new Date().toISOString());
+    setTime(formatTimestamp(new Date()));
   }, []);
 
   return (
