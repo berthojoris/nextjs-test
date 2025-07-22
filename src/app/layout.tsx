@@ -29,7 +29,7 @@ export default function RootLayout({
           <Header />
           <div className="flex">
             <Sidebar />
-            <main className="flex-1 pl-64 pt-14">{children}</main>
+            <main className="flex-1 pl-72 pt-14 px-6">{children}</main>
           </div>
         </ThemeProvider>
       </body>
