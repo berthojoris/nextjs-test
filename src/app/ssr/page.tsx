@@ -33,8 +33,8 @@ export default async function SSRPage() {
   const { title, completed } = data;
 
   return (
-    <div className="container max-w-screen-2xl flex items-center justify-center min-h-[calc(100vh-3.5rem)]">
-      <Card className="w-[450px]">
+    <div className="container mx-auto p-4">
+      <Card>
         <CardHeader>
           <CardTitle>Server-Side Rendering (SSR)</CardTitle>
           <CardDescription>
