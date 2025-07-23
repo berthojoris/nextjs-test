@@ -1,9 +1,12 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { formatTimestamp } from '@/lib/utils';
 
 export const dynamic = 'force-dynamic';
 
 async function getData() {
   // This fetch will be executed on the server for every request.
+  const serverTimestamp = formatTimestamp(new Date());
+  
   try {
     const res = await fetch('https://jsonplaceholder.typicode.com/todos/1', { cache: 'no-store' });
     if (!res.ok) {
@@ -11,11 +14,11 @@ async function getData() {
       throw new Error('Failed to fetch data');
     }
     const data = await res.json();
-    return data;
+    return { ...data, serverTimestamp };
   } catch (error) {
     console.error(error);
     // In a real app, you'd want to handle this error more gracefully
-    return { error: 'Failed to fetch data.' };
+    return { error: 'Failed to fetch data.', serverTimestamp };
   }
 }
 
@@ -30,7 +33,7 @@ export default async function SSRPage() {
     );
   }
 
-  const { title, completed } = data;
+  const { title, completed, serverTimestamp } = data;
 
   return (
     <div className="container mx-auto p-4">
@@ -42,8 +45,16 @@ export default async function SSRPage() {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <p>Todo Title: {title}</p>
-          <p>Completed: {completed ? 'Yes' : 'No'}</p>
+          <div className="space-y-2">
+            <p><strong>Todo Title:</strong> {title}</p>
+            <p><strong>Completed:</strong> {completed ? 'Yes' : 'No'}</p>
+            <p className="text-sm text-muted-foreground border-t pt-2 mt-4">
+              <strong>Server Timestamp:</strong> {serverTimestamp}
+            </p>
+            <p className="text-xs text-muted-foreground">
+              This timestamp shows when the server processed this request. Refresh the page to see it update.
+            </p>
+          </div>
         </CardContent>
       </Card>
     </div>
