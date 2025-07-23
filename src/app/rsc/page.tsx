@@ -48,17 +48,17 @@ interface Todo {
 
 // Server-side data fetching functions
 async function fetchUserProfile(): Promise<{ user: User; timestamp: Date }> {
-  await new Promise(resolve => setTimeout(resolve, 1000)); // 1s delay
-  
+  // await new Promise(resolve => setTimeout(resolve, 1000));
+
   try {
     const response = await fetch('https://jsonplaceholder.typicode.com/users/1', {
       cache: 'no-store' // Ensure fresh data for demonstration
     });
-    
+
     if (!response.ok) {
       throw new Error('Failed to fetch user data');
     }
-    
+
     const user = await response.json();
     return { user, timestamp: new Date() };
   } catch (error) {
@@ -68,17 +68,17 @@ async function fetchUserProfile(): Promise<{ user: User; timestamp: Date }> {
 }
 
 async function fetchRecentPosts(): Promise<{ posts: Post[]; timestamp: Date }> {
-  await new Promise(resolve => setTimeout(resolve, 2000)); // 2s delay
-  
+  // await new Promise(resolve => setTimeout(resolve, 2000));
+
   try {
     const response = await fetch('https://jsonplaceholder.typicode.com/posts?userId=1&_limit=5', {
       cache: 'no-store'
     });
-    
+
     if (!response.ok) {
       throw new Error('Failed to fetch posts data');
     }
-    
+
     const posts = await response.json();
     return { posts, timestamp: new Date() };
   } catch (error) {
@@ -88,17 +88,17 @@ async function fetchRecentPosts(): Promise<{ posts: Post[]; timestamp: Date }> {
 }
 
 async function fetchUserAlbums(): Promise<{ albums: Album[]; timestamp: Date }> {
-  await new Promise(resolve => setTimeout(resolve, 3000)); // 3s delay
-  
+  // await new Promise(resolve => setTimeout(resolve, 3000));
+
   try {
     const response = await fetch('https://jsonplaceholder.typicode.com/albums?userId=1&_limit=4', {
       cache: 'no-store'
     });
-    
+
     if (!response.ok) {
       throw new Error('Failed to fetch albums data');
     }
-    
+
     const albums = await response.json();
     return { albums, timestamp: new Date() };
   } catch (error) {
@@ -108,17 +108,17 @@ async function fetchUserAlbums(): Promise<{ albums: Album[]; timestamp: Date }> 
 }
 
 async function fetchUserTodos(): Promise<{ todos: Todo[]; timestamp: Date }> {
-  await new Promise(resolve => setTimeout(resolve, 4000)); // 4s delay
-  
+  // await new Promise(resolve => setTimeout(resolve, 4000));
+
   try {
     const response = await fetch('https://jsonplaceholder.typicode.com/todos?userId=1&_limit=6', {
       cache: 'no-store'
     });
-    
+
     if (!response.ok) {
       throw new Error('Failed to fetch todos data');
     }
-    
+
     const todos = await response.json();
     return { todos, timestamp: new Date() };
   } catch (error) {
@@ -212,7 +212,7 @@ function TodosSkeleton() {
 async function UserProfile() {
   try {
     const { user, timestamp } = await fetchUserProfile();
-    
+
     return (
       <Card className="border-blue-200 dark:border-blue-800">
         <CardHeader>
@@ -253,7 +253,7 @@ async function UserProfile() {
 async function RecentPosts() {
   try {
     const { posts, timestamp } = await fetchRecentPosts();
-    
+
     return (
       <Card className="border-green-200 dark:border-green-800">
         <CardHeader>
@@ -292,7 +292,7 @@ async function RecentPosts() {
 async function UserAlbums() {
   try {
     const { albums, timestamp } = await fetchUserAlbums();
-    
+
     return (
       <Card className="border-purple-200 dark:border-purple-800">
         <CardHeader>
@@ -330,7 +330,7 @@ async function UserTodos() {
   try {
     const { todos, timestamp } = await fetchUserTodos();
     const completedCount = todos.filter(todo => todo.completed).length;
-    
+
     return (
       <Card className="border-orange-200 dark:border-orange-800">
         <CardHeader>
@@ -350,8 +350,8 @@ async function UserTodos() {
             {todos.map((todo) => (
               <div key={todo.id} className="flex items-center space-x-3">
                 <div className={`w-4 h-4 rounded border-2 flex items-center justify-center ${
-                  todo.completed 
-                    ? 'bg-green-500 border-green-500' 
+                  todo.completed
+                    ? 'bg-green-500 border-green-500'
                     : 'border-gray-300 dark:border-gray-600'
                 }`}>
                   {todo.completed && (
@@ -361,8 +361,8 @@ async function UserTodos() {
                   )}
                 </div>
                 <span className={`text-sm capitalize ${
-                  todo.completed 
-                    ? 'line-through text-muted-foreground' 
+                  todo.completed
+                    ? 'line-through text-muted-foreground'
                     : ''
                 }`}>
                   {todo.title}
