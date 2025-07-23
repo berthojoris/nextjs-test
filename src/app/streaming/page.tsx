@@ -32,7 +32,7 @@ interface Todo {
 
 // Component that fetches posts with 2 second delay
 async function PostsComponent() {
-  await new Promise(resolve => setTimeout(resolve, 2000));
+  // await new Promise(resolve => setTimeout(resolve, 2000));
 
   try {
     const response = await fetch('https://jsonplaceholder.typicode.com/posts?_limit=3', {
@@ -70,7 +70,7 @@ async function PostsComponent() {
 
 // Component that fetches users with 3 second delay
 async function UsersComponent() {
-  await new Promise(resolve => setTimeout(resolve, 3000));
+  // await new Promise(resolve => setTimeout(resolve, 3000));
 
   try {
     const response = await fetch('https://jsonplaceholder.typicode.com/users?_limit=3', {
@@ -111,7 +111,7 @@ async function UsersComponent() {
 
 // Component that fetches todos with 4 second delay
 async function TodosComponent() {
-  await new Promise(resolve => setTimeout(resolve, 4000));
+  // await new Promise(resolve => setTimeout(resolve, 4000));
 
   try {
     const response = await fetch('https://jsonplaceholder.typicode.com/todos?_limit=5', {
