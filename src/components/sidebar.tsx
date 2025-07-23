@@ -21,10 +21,18 @@ export function Sidebar() {
         {
           href: "/",
           icon: Home,
+          label: "Home",
+          shortLabel: "Home",
+          description: "Welcome page",
+          badge: undefined
+        },
+        {
+          href: "/dashboard",
+          icon: LayoutTemplate,
           label: "Dashboard",
           shortLabel: "Dashboard",
-          description: "Main overview",
-          badge: undefined
+          description: "Analytics & metrics",
+          badge: "New"
         }
       ]
     },
@@ -97,7 +105,7 @@ export function Sidebar() {
   ];
 
   return (
-    <aside className="fixed top-14 left-0 z-40 w-72 h-[calc(100vh-3.5rem)] bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-r border-border/40">
+    <aside className="fixed top-16 left-0 z-40 w-72 h-[calc(100vh-4rem)] bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-r border-border/40">
       <div className="flex flex-col h-full">
         <div className="flex-1 overflow-y-auto py-4">
           <nav className="px-3 space-y-6">
