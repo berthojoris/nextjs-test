@@ -33,11 +33,13 @@ interface Todo {
 // Component that fetches posts with 2 second delay
 async function PostsComponent() {
   await new Promise(resolve => setTimeout(resolve, 2000));
-  
+
   try {
-    const response = await fetch('https://jsonplaceholder.typicode.com/posts?_limit=3');
+    const response = await fetch('https://jsonplaceholder.typicode.com/posts?_limit=3', {
+      cache: 'no-store',
+    });
     const posts: Post[] = await response.json();
-    
+
     return (
       <div className="space-y-4">
         <div className="flex items-center gap-2 mb-4">
@@ -69,11 +71,13 @@ async function PostsComponent() {
 // Component that fetches users with 3 second delay
 async function UsersComponent() {
   await new Promise(resolve => setTimeout(resolve, 3000));
-  
+
   try {
-    const response = await fetch('https://jsonplaceholder.typicode.com/users?_limit=3');
+    const response = await fetch('https://jsonplaceholder.typicode.com/users?_limit=3', {
+      cache: 'no-store',
+    });
     const users: User[] = await response.json();
-    
+
     return (
       <div className="space-y-4">
         <div className="flex items-center gap-2 mb-4">
@@ -108,11 +112,13 @@ async function UsersComponent() {
 // Component that fetches todos with 4 second delay
 async function TodosComponent() {
   await new Promise(resolve => setTimeout(resolve, 4000));
-  
+
   try {
-    const response = await fetch('https://jsonplaceholder.typicode.com/todos?_limit=5');
+    const response = await fetch('https://jsonplaceholder.typicode.com/todos?_limit=5', {
+      cache: 'no-store',
+    });
     const todos: Todo[] = await response.json();
-    
+
     return (
       <div className="space-y-4">
         <div className="flex items-center gap-2 mb-4">
@@ -127,8 +133,8 @@ async function TodosComponent() {
                 todo.completed ? 'bg-green-500' : 'bg-gray-300'
               }`} />
               <span className={`text-sm ${
-                todo.completed 
-                  ? 'text-purple-600 dark:text-purple-400 line-through' 
+                todo.completed
+                  ? 'text-purple-600 dark:text-purple-400 line-through'
                   : 'text-purple-800 dark:text-purple-300'
               }`}>
                 {todo.title}
@@ -178,28 +184,28 @@ export default function StreamingPage() {
         </CardHeader>
         <CardContent>
           <p className="text-muted-foreground mb-6">
-            This page demonstrates streaming with real API data from JSONPlaceholder. 
-            Each section loads at different intervals to simulate real-world scenarios 
+            This page demonstrates streaming with real API data from JSONPlaceholder.
+            Each section loads at different intervals to simulate real-world scenarios
             where different data sources have varying response times.
           </p>
-          
+
           <div className="grid gap-6 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
             {/* Posts Section - Loads after 2 seconds */}
             <Suspense fallback={<LoadingSkeleton title="Loading Posts" />}>
               <PostsComponent />
             </Suspense>
-            
+
             {/* Users Section - Loads after 3 seconds */}
             <Suspense fallback={<LoadingSkeleton title="Loading Users" />}>
               <UsersComponent />
             </Suspense>
-            
+
             {/* Todos Section - Loads after 4 seconds */}
             <Suspense fallback={<LoadingSkeleton title="Loading Todos" />}>
               <TodosComponent />
             </Suspense>
           </div>
-          
+
           <div className="mt-8 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
             <h4 className="font-semibold text-blue-800 dark:text-blue-300 mb-2">
               How Streaming Works:
