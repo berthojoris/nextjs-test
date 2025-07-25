@@ -46,13 +46,16 @@ interface Todo {
   completed: boolean;
 }
 
+// Force dynamic rendering for this route
+export const dynamic = 'force-dynamic';
+
 // Server-side data fetching functions
 async function fetchUserProfile(): Promise<{ user: User; timestamp: Date }> {
   // await new Promise(resolve => setTimeout(resolve, 1000));
 
   try {
     const response = await fetch('https://jsonplaceholder.typicode.com/users/1', {
-      cache: 'no-store' // Ensure fresh data for demonstration
+      next: { revalidate: 60 } // Cache for 60 seconds instead of no-store
     });
 
     if (!response.ok) {
@@ -72,7 +75,7 @@ async function fetchRecentPosts(): Promise<{ posts: Post[]; timestamp: Date }> {
 
   try {
     const response = await fetch('https://jsonplaceholder.typicode.com/posts?userId=1&_limit=5', {
-      cache: 'no-store'
+      next: { revalidate: 60 } // Cache for 60 seconds
     });
 
     if (!response.ok) {
@@ -92,7 +95,7 @@ async function fetchUserAlbums(): Promise<{ albums: Album[]; timestamp: Date }> 
 
   try {
     const response = await fetch('https://jsonplaceholder.typicode.com/albums?userId=1&_limit=4', {
-      cache: 'no-store'
+      next: { revalidate: 60 } // Cache for 60 seconds
     });
 
     if (!response.ok) {
@@ -112,7 +115,7 @@ async function fetchUserTodos(): Promise<{ todos: Todo[]; timestamp: Date }> {
 
   try {
     const response = await fetch('https://jsonplaceholder.typicode.com/todos?userId=1&_limit=6', {
-      cache: 'no-store'
+      next: { revalidate: 60 } // Cache for 60 seconds
     });
 
     if (!response.ok) {
