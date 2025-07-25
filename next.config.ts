@@ -1,9 +1,14 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // Enable Partial Prerendering (PPR) for Next.js 15
+  experimental: {
+    ppr: true,
+  },
+
   // Ensure static assets are properly served
   trailingSlash: false,
-  
+
   // Add headers for better caching of static assets
   async headers() {
     return [
