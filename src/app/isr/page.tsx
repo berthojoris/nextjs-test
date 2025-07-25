@@ -28,6 +28,7 @@ export default async function ISRPage() {
           <CardTitle>Incremental Static Regeneration (ISR)</CardTitle>
         </CardHeader>
         <CardContent>
+          <p>Test</p>
           <p>This page is statically generated, but it will be re-generated in the background after a certain amount of time (10 seconds).</p>
           <p>Todo Title: {title}</p>
           <p>Completed: {completed ? 'Yes' : 'No'}</p>
