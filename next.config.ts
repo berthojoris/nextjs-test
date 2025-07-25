@@ -3,7 +3,7 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   // Enable Partial Prerendering (PPR) for Next.js 15
   experimental: {
-    ppr: true,
+    ppr: false,
   },
 
   // Ensure static assets are properly served

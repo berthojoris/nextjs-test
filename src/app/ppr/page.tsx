@@ -30,7 +30,6 @@ interface User {
 
 // Optimized data fetching with caching
 async function fetchPosts() {
-  'use cache';
   const response = await fetch('https://jsonplaceholder.typicode.com/posts?_limit=5', {
     next: { revalidate: 60 } // Cache for 1 minute
   });
@@ -40,7 +39,6 @@ async function fetchPosts() {
 }
 
 async function fetchUsers() {
-  'use cache';
   const response = await fetch('https://jsonplaceholder.typicode.com/users?_limit=4', {
     next: { revalidate: 60 } // Cache for 1 minute
   });
