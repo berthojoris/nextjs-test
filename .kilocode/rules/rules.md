@@ -1,6 +1,6 @@
 # AI Coding Guidelines for Next.js 15 Project
 
-This document outlines the rules and best practices to be followed when adding, modifying, or fixing bugs in this project. The project is built with the following stack:
+This document outlines the rules and best practices to be followed when adding, modifying, or fixing bugs in this project. This project is built with the following stack:
 
 - **Framework**: Next.js v15
 - **Language**: TypeScript
@@ -119,39 +119,3 @@ This document outlines the rules and best practices to be followed when adding, 
 - Do not remove existing logic unless explicitly told.
 - Prefer minimal, readable, and safe code changes.
 - Explain any assumptions when generating or modifying logic.
-
-## 16. Reference and Documentation
-
-- Always refer to **MCP context7** for the latest and most accurate documentation regarding:
-  - React usage patterns
-  - Next.js structure and APIs
-  - Tailwind CSS conventions and best practices
-- Follow updates in MCP context7 as the primary source of truth before referring to third-party blogs or unofficial guides.
-
-## 17. Memory & Context Management
-
-- Always use **MCP Knowledge Graph Memory Server** to:
-  - Store, recall, and manage all relevant context across development sessions.
-  - Track progress, decisions, assumptions, prompts, and reasoning.
-  - Ensure consistent understanding between contributors and AI assistance.
-
-## 18. Browsing and Research
-
-- Always use **Exa Search MCP** to:
-  - Browse internet sources for official documentation.
-  - Look up code usage patterns, API references, or solutions to bugs.
-  - Gather reliable external resources before implementation.
-
-## 19. Web Page Copying and Analysis
-
-- Always use **Puppeteer MCP** to:
-  - Capture screenshots or DOM snapshots of any web page.
-  - Copy entire layouts, styles, or page structures from external websites when instructed.
-  - Analyze and extract useful patterns from real-world implementations.
-
-## 20. UI Design Assistance
-
-- Always use **Magic UI MCP** to:
-  - Generate visual UI designs based on instructions, sketches, or examples.
-  - Convert reference images or mockups into usable Tailwind + shadcn components.
-  - Ensure design consistency across pages and features.
